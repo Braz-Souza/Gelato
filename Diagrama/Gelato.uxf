@@ -1,0 +1,26 @@
+<diagram program="umletino" version="15.1"><zoom_level>10</zoom_level><element><id>UMLClass</id><coordinates><x>410</x><y>80</y><w>140</w><h>60</h></coordinates><panel_attributes>/Produto/
+--
++ nome: string
++ valor: float</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>190</x><y>210</y><w>150</w><h>60</h></coordinates><panel_attributes>/Gelado/
+--
++ sabor: string
++ cobertura: string</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>590</x><y>200</y><w>180</w><h>80</h></coordinates><panel_attributes>/Bebida/
+--
++ marca: string
++ tamanhoMl: int
++ temperaturaAdequadaC: int
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>490</x><y>130</y><w>210</w><h>90</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>10;10;10;40;190;40;190;70</additional_attributes></element><element><id>Relation</id><coordinates><x>260</x><y>130</y><w>220</w><h>100</h></coordinates><panel_attributes>lt=&lt;&lt;-
+</panel_attributes><additional_attributes>200;10;200;40;10;40;10;80</additional_attributes></element><element><id>UMLClass</id><coordinates><x>90</x><y>330</y><w>130</w><h>60</h></coordinates><panel_attributes>Sorvete
+--
++ casquinha: bool
++ qtdBola: int</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>290</x><y>320</y><w>130</w><h>80</h></coordinates><panel_attributes>Milkshake
+--
++ tamanhoMl: int
++ canudinho: bool
++ morango: bool</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>510</x><y>330</y><w>100</w><h>50</h></coordinates><panel_attributes>Agua
+--
++ temGas: bool</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>640</x><y>350</y><w>100</w><h>50</h></coordinates><panel_attributes>Refri
+--
++ sabor: string</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>770</x><y>330</y><w>100</w><h>50</h></coordinates><panel_attributes>Energético
+--
++ sabor: string</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>710</x><y>270</y><w>130</w><h>80</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>10;10;10;40;110;40;110;60</additional_attributes></element><element><id>Relation</id><coordinates><x>550</x><y>270</y><w>130</w><h>80</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>110;10;110;40;10;40;10;60</additional_attributes></element><element><id>Relation</id><coordinates><x>680</x><y>270</y><w>30</w><h>100</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>10;10;10;80</additional_attributes></element><element><id>Relation</id><coordinates><x>290</x><y>260</y><w>90</w><h>80</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>10;10;10;40;70;40;70;60</additional_attributes></element><element><id>Relation</id><coordinates><x>150</x><y>260</y><w>110</w><h>90</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>90;10;90;40;10;40;10;70</additional_attributes></element></diagram>
