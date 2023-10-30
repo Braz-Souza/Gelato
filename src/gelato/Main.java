@@ -15,15 +15,32 @@ public class Main {
      */
     public static void main(String[] args) {
 
-        // Criando agua
-        Produto aguaMineral;
-        aguaMineral = new Agua("Agua sem gás", 2.99f, "Cristal", 500, 25, true);
-        System.out.println(aguaMineral.toString());
+        Carrinho carrinho = new Carrinho();
+        System.out.println(carrinho.toString());
+        System.out.println("-----");
         
-        // Criando agua
-        Produto sorveteMorango;
-        sorveteMorango = new Sorvete("Sorvete de morango", 4.49f, "Morango", "Sem cobertura", true, 1);
-        System.out.println(sorveteMorango.toString());
+        carrinho.add(0);
+        carrinho.print();
+        System.out.println("-----");
+        
+        carrinho.add(1);
+        carrinho.print();
+        System.out.println("-----");
+        
+        carrinho.add(0);
+        carrinho.print();
+        System.out.println("-----");
+        
+        carrinho.del(1);
+        carrinho.print();
+        System.out.println("-----");
+        
+        carrinho.buy();
+        System.out.println("-----");
+        
+        carrinho.print();
+        System.out.println("-----");
+        
+        carrinho.buy();
     }
-
 }
