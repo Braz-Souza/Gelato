@@ -4,6 +4,8 @@
  */
 package gelato;
 
+import products.Produto;
+
 /**
  *
  * @author brazx
@@ -18,8 +20,11 @@ public class Carrinho {
     
     public Carrinho() {
         this.menuTeste = new Produto[]{
-            new Agua("Agua sem gás", 2.99f, "Cristal", 500, 25, true), 
-            new Sorvete("Sorvete de morango", 4.49f, "Morango", "Sem cobertura", true, 1)
+            new ProdutoBuilder("Agua", 2.99f).setTamanhoMl(500).buildBebida(), 
+            new ProdutoBuilder("Sorvete de morango", 5.99f).setSabor("Morango").buildGelado(), 
+            new ProdutoBuilder("Milkshake de Baunilha", 9.99f).setSabor("Baunilha").buildGelado(), 
+            new ProdutoBuilder("Coca-Cola", 2.76f).buildBebida(), 
+            new ProdutoBuilder("Agua", 10.50f).setTamanhoMl(2000).buildBebida(),
         };
     }
 

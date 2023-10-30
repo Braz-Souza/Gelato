@@ -4,9 +4,7 @@
  */
 package gelato;
 
-import products.Agua;
 import products.Produto;
-import products.Sorvete;
 
 /**
  *
@@ -36,20 +34,21 @@ public class Main {
                 .buildGelado();
         System.out.println(sorveteMorango.toString());
 
-        System.out.println("\n\nUtilização do carrinho: \n")
+        System.out.println("\n\nUtilização do carrinho: \n");
+        
         Carrinho carrinho = new Carrinho();
-        System.out.println(carrinho.toString());
-        System.out.println("-----");
-        
-        carrinho.add(0);
         carrinho.print();
         System.out.println("-----");
         
-        carrinho.add(1);
+        carrinho.add(2);
         carrinho.print();
         System.out.println("-----");
         
-        carrinho.add(0);
+        carrinho.add(3);
+        carrinho.print();
+        System.out.println("-----");
+        
+        carrinho.add(3);
         carrinho.print();
         System.out.println("-----");
         
