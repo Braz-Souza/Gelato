@@ -16,52 +16,9 @@ public class Main {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-
-        // Criando agua
-        Produto aguaMineral;
-        // aguaMineral = new Agua("Agua sem gás", 2.99f, "Cristal", 500, 25, true);
-        aguaMineral = new ProdutoBuilder("Água sem gás", 2.99f)
-                .setMarca("Cristal")
-                .setTamanhoMl(500)
-                .buildBebida();
-        System.out.println(aguaMineral.toString());
         
-        // Criando agua
-        Produto sorveteMorango;
-        // sorveteMorango = new Sorvete("Sorvete de morango", 4.49f, "Morango", "Sem cobertura", true, 1);
-        sorveteMorango = new ProdutoBuilder("Sorvete de morango", 4.49f)
-                .setSabor("Morango")
-                .buildGelado();
-        System.out.println(sorveteMorango.toString());
-
-        System.out.println("\n\nUtilização do carrinho: \n");
-        
-        Carrinho carrinho = new Carrinho();
-        carrinho.print();
-        System.out.println("-----");
-        
-        carrinho.add(2);
-        carrinho.print();
-        System.out.println("-----");
-        
-        carrinho.add(3);
-        carrinho.print();
-        System.out.println("-----");
-        
-        carrinho.add(3);
-        carrinho.print();
-        System.out.println("-----");
-        
-        carrinho.del(1);
-        carrinho.print();
-        System.out.println("-----");
-        
-        carrinho.buy();
-        System.out.println("-----");
-        
-        carrinho.print();
-        System.out.println("-----");
-        
-        carrinho.buy();
+        Carrinho cart = new Carrinho();
+        Console c = new Console(cart);
+        c.run();
     }
 }
