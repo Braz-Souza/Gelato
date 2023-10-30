@@ -28,6 +28,11 @@ public class ProdutoBuilder {
         this.morango = false;
         this.casquinha = true;
         this.cobertura = "Sem cobertura";
+        this.temGas = false;
+        this.canudinho = false;
+        this.morango = false;
+        this.casquinha = true;
+        this.qtdBola = 1;
     }
     
     public ProdutoBuilder setSabor(String s) {
@@ -60,23 +65,23 @@ public class ProdutoBuilder {
         return this;
     }
     
-    public ProdutoBuilder setGas(boolean y) {
-        this.temGas = y;
+    public ProdutoBuilder addGas() {
+        this.temGas = true;
         return this;
     }
     
-    public ProdutoBuilder setCasquinha(boolean y) {
-        this.casquinha = y;
+    public ProdutoBuilder addCopo() {
+        this.casquinha = false;
         return this;
     }
     
-    public ProdutoBuilder setCanudinho(boolean y) {
-        this.canudinho = y;
+    public ProdutoBuilder addCanudo() {
+        this.canudinho = true;
         return this;
     }
     
-    public ProdutoBuilder setMorango(boolean y) {
-        this.morango = y;
+    public ProdutoBuilder addMorango() {
+        this.morango = true;
         return this;
     }
     
