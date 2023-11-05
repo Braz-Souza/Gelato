@@ -12,14 +12,10 @@ import products.Produto;
  */
 public class Bebida extends Produto{
     public String marca;
-    public int tamanhoMl;
-    public int tempAdeqC;
     
-    public Bebida(String nome, float valor, String marca, int tamanhoMl, int tempAdeqC) {
+    public Bebida(String nome, float valor, String marca) {
         this.nome = nome;
         this.valor = valor;
         this.marca = marca;
-        this.tamanhoMl = tamanhoMl;
-        this.tempAdeqC = tempAdeqC;
     } 
 }

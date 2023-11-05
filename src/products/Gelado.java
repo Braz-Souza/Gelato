@@ -11,13 +11,13 @@ import products.Produto;
  * @author brazx
  */
 public class Gelado extends Produto{
-    public String sabor;
+    public String[] sabores;
     public String cobertura;
     
-    public Gelado(String nome, float valor, String sabor, String cobertura) {
+    public Gelado(String nome, float valor, String[] sabor, String cobertura) {
         this.nome = nome;
         this.valor = valor;
-        this.sabor = sabor;
+        this.sabores = sabor;
         this.cobertura = cobertura;
     } 
 }

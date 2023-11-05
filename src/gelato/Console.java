@@ -4,7 +4,10 @@
  */
 package gelato;
 
+import geladoBuilder.sorveteBuilder;
 import java.util.Scanner;
+import products.Bebida;
+import products.Gelado;
 import products.Produto;
 
 /**
@@ -15,6 +18,7 @@ public class Console {
     Scanner input = new Scanner(System.in);
     Carrinho carrinho;
     private Produto[] menuTeste;
+    private int menuTesteID = 2;
     
     public Console(Carrinho cart) {
         this.carrinho = cart;
@@ -85,19 +89,17 @@ public class Console {
     // REMOVER DEPOIS 
     private void cardapioPlaceholder() {
         this.menuTeste = new Produto[]{
-            new ProdutoBuilder("Agua", 2.99f).setTamanhoMl(500).buildBebida(), 
-            new ProdutoBuilder("Sorvete de morango", 5.99f).setSabor("Morango").buildGelado(), 
-            new ProdutoBuilder("Milkshake de Baunilha", 9.99f).setSabor("Baunilha").buildGelado(), 
-            new ProdutoBuilder("Coca-Cola", 2.76f).buildBebida(), 
-            new ProdutoBuilder("Agua", 10.50f).setTamanhoMl(2000).buildBebida(),
+            new Bebida("Agua 500ml", 2.99f, "Cristal"), 
+            new Bebida("Coca-Cola", 2.76f, "Coca-Cola"), 
+            new Bebida("Agua 2L", 10.50f, "Cristal"),
         };
         
         System.out.println("Cardápio: ");
         System.out.println(" 0 -> Agua 500ML - 2.99R$");
-        System.out.println(" 1 -> Sorvete de morango - 5.99R$");
-        System.out.println(" 2 -> Milkshake de Baunilha - 9.99R$");
-        System.out.println(" 3 -> Coca-Cola - 2.76R$");
-        System.out.println(" 4 -> Agua 2L - 10.50R$");
+        System.out.println(" 1 -> Coca-Cola - 2.76R$");
+        System.out.println(" 2 -> Agua 2L - 10.50R$");
+        System.out.println(" 3 -> Monte seu sorvete");
+        System.out.println(" 4 -> Monte seu milkshake");
     }
     
     private void verCart() {
@@ -108,7 +110,26 @@ public class Console {
         this.verCardapio();
         System.out.println("Escolha o número do item no cardápio para adicionar no carrinho: ");
         int opcao = input.nextInt();
-        carrinho.add(opcao);
+        if (opcao <= this.menuTesteID) {
+            carrinho.add(this.menuTeste[opcao]);
+        } else if (opcao == this.menuTesteID + 1) {
+            this.addSorvete();
+        } else if (opcao == this.menuTesteID + 2) {
+            this.addMilkshake();
+        }
+    }
+    
+    private void addSorvete() {
+        sorveteBuilder maquinaSorvete = new sorveteBuilder();
+        Gelado sorvete = maquinaSorvete.run();
+        if (sorvete.nome != "") {
+            carrinho.add(sorvete);
+        }
+    }
+    
+    private void addMilkshake() {
+        // Falta fazer milkshakeBuilder
+        System.out.println("Maquina de milkshake está quebrada no momento.");
     }
 
     private void delCart() {

@@ -4,6 +4,8 @@
  */
 package gelato;
 
+import geladoBuilder.sorveteBuilder;
+import products.Bebida;
 import products.Produto;
 
 /**
@@ -12,26 +14,18 @@ import products.Produto;
  */
 public class Carrinho {
 
-    private final Produto[] menuTeste;
     private final int maxCartSize = 64;
     private Produto[] cart = new Produto[maxCartSize];
     private float price = 0;
     private int cartID = -1;
     
     public Carrinho() {
-        this.menuTeste = new Produto[]{
-            new ProdutoBuilder("Agua", 2.99f).setTamanhoMl(500).buildBebida(), 
-            new ProdutoBuilder("Sorvete de morango", 5.99f).setSabor("Morango").buildGelado(), 
-            new ProdutoBuilder("Milkshake de Baunilha", 9.99f).setSabor("Baunilha").buildGelado(), 
-            new ProdutoBuilder("Coca-Cola", 2.76f).buildBebida(), 
-            new ProdutoBuilder("Agua", 10.50f).setTamanhoMl(2000).buildBebida(),
-        };
     }
 
-    public boolean add(int id) {
+    public boolean add(Produto produto) {
         if (this.cartID >= maxCartSize-1) return false;
-        this.cart[++this.cartID] = this.menuTeste[id];
-        this.price += this.cart[this.cartID].valor;
+        this.cart[++this.cartID] = produto;
+        this.price += produto.valor;
         return true;
     }
     
