@@ -4,7 +4,7 @@
  */
 package gelato;
 
-import products.Produto;
+import geladoBuilder.sorveteBuilder;
 
 /**
  *

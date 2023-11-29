@@ -4,10 +4,6 @@
  */
 package gelato;
 
-import geladoBuilder.sorveteBuilder;
-import products.Bebida;
-import products.Produto;
-
 /**
  *
  * @author brazx
