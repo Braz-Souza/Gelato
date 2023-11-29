@@ -44,7 +44,7 @@ public class Console {
                     this.delCart();
                     break;
                 case 6:
-                    this.buy();
+                    run = this.buy();
                     break;
                 case 7:
                     run = false;
@@ -117,8 +117,13 @@ public class Console {
         carrinho.del(opcao);
     }
 
-    private void buy() {
-        carrinho.buy();
+    private boolean buy() {
+        if (carrinho.buy()) {
+            System.out.println("Obrigado por comprar conosco!\nDeseja continuar comprando? (0 => SIM)");
+            int opcao = input.nextInt();
+            return opcao == 0;
+        }
+        return true;
     }
 
     private void addGelado() {

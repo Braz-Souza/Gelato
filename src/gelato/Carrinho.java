@@ -21,7 +21,7 @@ public class Carrinho {
     public boolean add(Produto produto) {
         if (this.cartID >= maxCartSize-1) return false;
         this.cart[++this.cartID] = produto;
-        this.price += produto.valor;
+        this.price += produto.obterValor();
         return true;
     }
     
@@ -29,7 +29,7 @@ public class Carrinho {
         if (this.cartID < 0) return false;
         if (id < 0 || id > maxCartSize) return false;
         
-        this.price -= this.cart[id].valor; 
+        this.price -= this.cart[id].obterValor(); 
         
         for (int i = id+1; i<=this.cartID; i++) 
             this.cart[i - 1] = this.cart[i];
@@ -37,15 +37,16 @@ public class Carrinho {
         return true;
     }
     
-    public void buy() {
+    public boolean buy() {
         if (this.cartID == -1) {
             System.out.println("Carrinho está vazio, não é possível continuar a compra");
-        } else {
-            System.out.println("Compra concluída!\n");
-            String printStr = "Recibo: \n" + this.toString();
-            System.out.println(printStr);
-            this.clear();
+            return false;
         }
+        System.out.println("Compra concluída!\n");
+        String printStr = "Recibo: \n" + this.toString();
+        System.out.println(printStr);
+        this.clear();
+        return true;
     }
     
     public void clear() {

@@ -4,6 +4,8 @@
  */
 package geladoBuilder;
 
+import gelato.Produto;
+
 /**
  *
  * @author brazx
@@ -16,11 +18,12 @@ public abstract class geladoBuilder {
     protected float custoCobertura = 0.99f;
     protected String[] saboresPossiveis = {"Morango", "Baunilha", "Chocolate"};    
     protected String[] coberturasPossiveis = {"Morango", "Chocolate"};    
+    protected Produto gelado;
     
     public geladoBuilder() {
         valor = 3.99f;
         marca = "Gelato";
-        cobertura  = "Sem Cobertura";
+        cobertura  = null;
     }
     
     public String[] getSabores() {
@@ -31,7 +34,16 @@ public abstract class geladoBuilder {
         return coberturasPossiveis;
     }
     
+    public void updateAdc(float valorAdc) {
+        this.valor += valorAdc;
+        this.gelado.atualizarValor(valorAdc);
+    }
+    
     public float getValor() {
         return valor;
+    }
+    
+    public Produto getGelado() {
+        return this.gelado;
     }
 }

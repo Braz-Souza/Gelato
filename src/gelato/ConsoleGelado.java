@@ -4,6 +4,7 @@
  */
 package gelato;
 
+import geladoBuilder.milkshakeBuilder;
 import geladoBuilder.sorveteBuilder;
 import java.util.Scanner;
 
@@ -26,7 +27,7 @@ public class ConsoleGelado{
                 this.criarSorvete(cart);
                 break;
             case 2:
-                this.criarMilkshake();
+                this.criarMilkshake(cart);
                 break;
             case 3:
             default:
@@ -35,40 +36,40 @@ public class ConsoleGelado{
     }
     
     public void criarSorvete(Carrinho cart) {
-        sorveteBuilder criadorSorvete = new sorveteBuilder();
+        sorveteBuilder criador = new sorveteBuilder();
         Produto sorvete;
         
         boolean run = true;
         int escolha;
-        System.out.println(String.format("Valor do sorvete é %f", criadorSorvete.getValor()));
+        System.out.println(criador.getGelado());
         System.out.println("1 -> Adicionar Sabor\n2 -> Remover Sabor\n3 -> Adicionar Cobertura\n4 -> Remover Cobertura\n5 -> Comprar\n6 -> Voltar");
         opcao = input.nextInt();
         while (run){
             switch (opcao) {
                 case 1:
                     System.out.println("Escolha um sabor:");
-                    for (int i = 0; i < criadorSorvete.getSabores().length; i++) {
-                        System.out.println(String.format("%d -> %s", i, criadorSorvete.getSabores()[i]));
+                    for (int i = 0; i < criador.getSabores().length; i++) {
+                        System.out.println(String.format("%d -> %s", i, criador.getSabores()[i]));
                     }
                     escolha = input.nextInt();
-                    criadorSorvete.addSabor(escolha);
+                    criador.addSabor(escolha);
                     break;
                 case 2:
-                    criadorSorvete.removeSabor();
+                    criador.removeSabor();
                     break;
                 case 3:
                     System.out.println("Escolha uma cobertura:");
-                    for (int i = 0; i < criadorSorvete.getCoberturas().length; i++) {
-                        System.out.println(String.format("%d -> %s", i, criadorSorvete.getCoberturas()[i]));
+                    for (int i = 0; i < criador.getCoberturas().length; i++) {
+                        System.out.println(String.format("%d -> %s", i, criador.getCoberturas()[i]));
                     }
                     escolha = input.nextInt();
-                    criadorSorvete.addCobertura(escolha);
+                    criador.addCobertura(escolha);
                     break;
                 case 4:
-                    criadorSorvete.removeCobertura();
+                    criador.removeCobertura();
                     break;
                 case 5:
-                    sorvete = criadorSorvete.getSorvete();
+                    sorvete = criador.getGelado();
                     cart.add(sorvete);
                 case 6:
                 default:
@@ -76,15 +77,65 @@ public class ConsoleGelado{
                     break;
             }
             if (run) {
-                System.out.println(String.format("Valor do sorvete é %f", criadorSorvete.getValor()));
+                System.out.println(criador.getGelado());
                 System.out.println("1 -> Adicionar Sabor\n2 -> Remover Sabor\n3 -> Adicionar Cobertura\n4 -> Remover Cobertura\n5 -> Comprar\n6 -> Voltar");
                 opcao = input.nextInt();
             }
         }
-        
     }
-
-    private void criarMilkshake() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    
+    public void criarMilkshake(Carrinho cart) {
+        milkshakeBuilder criador = new milkshakeBuilder();
+        Produto milkshake;
+        
+        boolean run = true;
+        int escolha;
+        System.out.println(criador.getGelado());
+        System.out.println("1 -> Escolher sabor\n2 -> Trocar tamanho\n3 -> Adicionar Cobertura\n4 -> Remover Cobertura\n5 -> Comprar\n6 -> Voltar");
+        opcao = input.nextInt();
+        while (run){
+            switch (opcao) {
+                case 1:
+                    System.out.println("Escolha um sabor:");
+                    for (int i = 0; i < criador.getSabores().length; i++) {
+                        System.out.println(String.format("%d -> %s", i, criador.getSabores()[i]));
+                    }
+                    escolha = input.nextInt();
+                    criador.setSabor(escolha);
+                    break;
+                case 2:
+                    System.out.println("Escolha um tamanho:");
+                    for (int i = 0; i < criador.getTamanhos().length; i++) {
+                        System.out.println(String.format("%d -> %d Ml", i, criador.getTamanhos()[i]));
+                    }
+                    escolha = input.nextInt();
+                    criador.mudarTamanho(escolha);
+                    break;
+                case 3:
+                    System.out.println("Escolha uma cobertura:");
+                    for (int i = 0; i < criador.getCoberturas().length; i++) {
+                        System.out.println(String.format("%d -> %s", i, criador.getCoberturas()[i]));
+                    }
+                    escolha = input.nextInt();
+                    criador.addCobertura(escolha);
+                    break;
+                case 4:
+                    criador.removeCobertura();
+                    break;
+                case 5:
+                    milkshake = criador.getGelado();
+                    cart.add(milkshake);
+                case 6:
+                default:
+                    run = false;
+                    break;
+            }
+            if (run) {
+                System.out.println(criador.getGelado());
+                System.out.println("1 -> Escolher sabor\n2 -> Trocar tamanho\n3 -> Adicionar Cobertura\n4 -> Remover Cobertura\n5 -> Comprar\n6 -> Voltar");
+                opcao = input.nextInt();
+            }
+        }
+        
     }
 }

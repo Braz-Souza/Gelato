@@ -12,45 +12,50 @@ import gelato.Produto;
  */
 public class sorveteBuilder extends geladoBuilder{
     private String[] sabores;
-    private int indexSabores = 0;
-    private int maxSabor = 5;
-    private float custoBola = 2.99f;
-    private Produto sorvete;
+    private int indexSabores = -1;
+    private final int maxSabor = 5;
+    private final float custoBola = 2.99f;
     
     public sorveteBuilder() {
         this.nome = "Sorvete";
         this.sabores = new String[10];
-        sorvete = new Produto(this.nome, this.valor);
+        gelado = new Produto(this.nome, this.valor);
+        gelado.defSorvete();
     }
     
     public void addSabor(int escolha) {
         String sabor = this.saboresPossiveis[escolha];
-        if (this.indexSabores + 1 < this.maxSabor)
-            sabores[this.indexSabores++] = sabor;
-        this.valor += this.custoBola;
-        this.sorvete.atualizarValor(this.custoBola);
+        if (this.indexSabores + 1 < this.maxSabor) {
+            this.sabores[++this.indexSabores] = sabor;
+            this.updateAdc(this.custoBola);
+            this.gelado.defSabores(this.sabores);
+            this.gelado.defBolasQtd(this.indexSabores+1);
+        }
     }
     
     public void removeSabor() {
-        this.indexSabores--;
-        this.valor -= this.custoBola;
-        this.sorvete.atualizarValor(-this.custoBola);
+        if (this.indexSabores > -1) {
+            this.sabores[this.indexSabores--] = null;
+            this.updateAdc(-this.custoBola);
+            this.gelado.defSabores(this.sabores);
+            this.gelado.defBolasQtd(this.indexSabores+1);
+        }
     }
     
     public void addCobertura(int escolha) {
-        String cob = this.coberturasPossiveis[escolha];
-        this.cobertura = cob;
-        this.valor += this.custoCobertura;
-        this.sorvete.atualizarValor(this.custoCobertura);
+        if (this.cobertura == null) {
+            String cob = this.coberturasPossiveis[escolha];
+            this.cobertura = cob;
+            this.updateAdc(this.custoCobertura);
+            this.gelado.defCobertura(cob);
+        }
     }
     
     public void removeCobertura() {
-        this.cobertura = "Sem Cobertura";
-        this.valor -= this.custoCobertura;
-        this.sorvete.atualizarValor(-this.custoCobertura);
-    }
-    
-    public Produto getSorvete() {
-        return sorvete;
+        if (this.cobertura != null) {
+            this.cobertura = null;
+            this.updateAdc(-this.custoCobertura);
+            this.gelado.defCobertura(null);
+        }
     }
 }
