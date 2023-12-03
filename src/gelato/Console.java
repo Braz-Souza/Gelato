@@ -24,13 +24,14 @@ public class Console {
     public void run() {
         this.printWelcome();
         boolean run = true;
+        
+        
+        this.login();
+        int opcao = input.nextInt();
         while (run) {
-            this.login();
-            int opcao = input.nextInt();
-            
             switch (opcao) {
                 case 1:
-                    menu.printMainMenu();
+                    menu.mainMenu();
                     break;
                 case 2:
                     menu.MenuF();
@@ -40,7 +41,10 @@ public class Console {
                     break;
                 default:
                     System.out.println("Opção inválida!\n");
-                    run();
+            }
+            if (run) {
+                this.login();
+                opcao = input.nextInt();
             }
         }
     }

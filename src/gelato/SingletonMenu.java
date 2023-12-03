@@ -111,19 +111,19 @@ public final class SingletonMenu {
   
    // MENU DO FUNCIONARIO
    protected void MenuF(){
-        System.out.println("\n+----------------------+");
-        System.out.println("|     Funcionario      |");
-        System.out.println("+----------------------+");
-        System.out.println("|1 - Adicionar produto |");
-        System.out.println("|2 - Remover produto   |");
-        System.out.println("|3 - Sair              |");
-        System.out.println("+----------------------+");
-        System.out.print("Escolha a opção desejada: ");
-        
-        int opcao = entrada.nextInt();
-         System.out.println("--------------------------\n");   
-         boolean run = true;
-         while(run){
+        boolean run = true;
+        while(run){
+            System.out.println("\n+----------------------+");
+                System.out.println("|     Funcionario      |");
+            System.out.println("+----------------------+");
+            System.out.println("|1 - Adicionar produto |");
+            System.out.println("|2 - Remover produto   |");
+            System.out.println("|3 - Sair              |");
+            System.out.println("+----------------------+");
+            System.out.print("Escolha a opção desejada: ");
+
+            int opcao = entrada.nextInt();
+            System.out.println("--------------------------\n"); 
             switch (opcao) {
                 
                 case 1:
@@ -137,8 +137,8 @@ public final class SingletonMenu {
                     break;
                 default:
                     System.out.println("Opção inválida!\n");
-                    MenuF();
-   }
+            }
+            
          }
    }
    
@@ -348,11 +348,7 @@ public final class SingletonMenu {
         System.out.println("+---------------------------------------+");
     }
     
-   
-   
-   // MENU PRINCIPAL
-   protected void printMainMenu() { 
-       
+   private int printMainMenu() {
         System.out.println("\n+----------------------+");
         System.out.println("|         Cliente      |");
         System.out.println("+----------------------+");
@@ -364,10 +360,17 @@ public final class SingletonMenu {
         System.out.println("+----------------------+");
         System.out.print("Escolha a opção desejada: ");
         
-         int opcao = input.nextInt();
-         System.out.println("--------------------------\n");   
-         boolean run = true;
-         while(run){
+        int opcao = input.nextInt();
+        System.out.println("--------------------------\n");   
+        return opcao;
+   }
+   
+   // MENU PRINCIPAL
+   protected void mainMenu() { 
+       
+        int opcao = printMainMenu();
+        boolean run = true;
+        while(run){
             switch (opcao) {
                 
                 case 1:
@@ -387,9 +390,9 @@ public final class SingletonMenu {
                     break;
                 default:
                     System.out.println("Opção inválida!\n");
-                    printMainMenu();
-    }
-   }
+            }
+            if (run) opcao = printMainMenu();
+        }
    }
    
    
@@ -423,7 +426,7 @@ public final class SingletonMenu {
             
             case 0:
                 
-                printMainMenu();
+                mainMenu();
                 break;
                 
             default:
