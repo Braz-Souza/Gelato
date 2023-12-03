@@ -10,8 +10,8 @@ package gelato;
  * @author brazx
  */
 public class Produto {
-    private final String nome;
-    private float valor;
+    protected final String nome;
+    protected float valor;
     private String[] sabores;
     private String sabor;
     private String cobertura;
@@ -29,6 +29,13 @@ public class Produto {
         this.cobertura = null;
         this.sabor = null;
         this.qtdBolas = 0;
+    }
+    public String getNome(){
+        return nome;
+    }
+    
+    public float getPreco(){
+        return valor;
     }
     
     public float obterValor() {

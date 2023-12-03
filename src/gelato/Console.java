@@ -12,45 +12,35 @@ import java.util.Scanner;
  */
 public class Console {
     Scanner input = new Scanner(System.in);
-    Carrinho carrinho;
-    private Produto[] menuTeste;
+   // Carrinho carrinho;
     
-    public Console(Carrinho cart) {
-        this.carrinho = cart;
+    public Console() {
+     //   this.carrinho = cart;
     }
+    
+    SingletonMenu menu = SingletonMenu.getInstancia();
+    
     
     public void run() {
         this.printWelcome();
         boolean run = true;
         while (run) {
-            this.printMainMenu();
+            this.login();
             int opcao = input.nextInt();
-            this.separate();
             
             switch (opcao) {
                 case 1:
-                    verCardapio();
+                    menu.printMainMenu();
                     break;
                 case 2:
-                    this.verCart();
+                    menu.MenuF();
                     break;
-                case 3:
-                    this.addCart();
-                    break;
-                case 4:
-                    this.addGelado();
-                    break;
-                case 5:
-                    this.delCart();
-                    break;
-                case 6:
-                    run = this.buy();
-                    break;
-                case 7:
+                case 0:
                     run = false;
                     break;
                 default:
                     System.out.println("Opção inválida!\n");
+                    run();
             }
         }
     }
@@ -61,73 +51,16 @@ public class Console {
         System.out.println("+---------------------------------------+");
     }
     
-    private void printMainMenu() {
+    private void login() {
         System.out.println("+----------------------+");
-        System.out.println("|   Escolha uma opção  |");
+        System.out.println("|     Tela de Login    |");
         System.out.println("+----------------------+");
-        System.out.println("|1 - Ver cardapio      |");
-        System.out.println("|2 - Ver carrinho      |");
-        System.out.println("|3 - Adicionar carrinho|");
-        System.out.println("|4 - Adicionar Gelado  |");
-        System.out.println("|5 - Remover carrinho  |");
-        System.out.println("|6 - Finalizar compra  |");
-        System.out.println("|7 - Sair              |");
+        System.out.println("|Entrar como:          |");        
+        System.out.println("|1 - Cliente           |");
+        System.out.println("|2 - Funcionario       |");
+        System.out.println("|0 - Sair              |");
         System.out.println("+----------------------+");
         System.out.print("Escolha a opção desejada: ");
     }
     
-    private void separate() {
-        System.out.println("+----------------------+\n");
-    }
-        
-    private void verCardapio() {
-        // Trocar depois
-        this.cardapioPlaceholder();
-    }
-    
-    // REMOVER DEPOIS 
-    private void cardapioPlaceholder() {
-        this.menuTeste = new Produto[]{
-            new Produto("Agua 500Ml", 2.99f),
-            new Produto("Coca-Cola 300Ml", 2.76f),
-            new Produto("Agua 2L", 2.76f),
-        };
-        
-        System.out.println("Cardápio: ");
-        System.out.println(" 0 -> Agua 500ML - 2.99R$");
-        System.out.println(" 1 -> Coca-Cola - 2.76R$");
-        System.out.println(" 2 -> Agua 2L - 10.50R$");
-    }
-    
-    private void verCart() {
-        carrinho.print();
-    }
-
-    private void addCart() {
-        this.verCardapio();
-        System.out.println("Escolha o número do item no cardápio para adicionar no carrinho: ");
-        int opcao = input.nextInt();
-        carrinho.add(this.menuTeste[opcao]);
-    }
-
-    private void delCart() {
-        this.verCart();
-        System.out.println("Escolha o número do item no carrinho para remover: ");
-        int opcao = input.nextInt();
-        carrinho.del(opcao);
-    }
-
-    private boolean buy() {
-        if (carrinho.buy()) {
-            System.out.println("Obrigado por comprar conosco!\nDeseja continuar comprando? (0 => SIM)");
-            int opcao = input.nextInt();
-            return opcao == 0;
-        }
-        return true;
-    }
-
-    private void addGelado() {
-        ConsoleGelado console = new ConsoleGelado();
-        console.run(this.carrinho);
-    }
 }

@@ -4,7 +4,7 @@
  */
 package gelato;
 
-import geladoBuilder.sorveteBuilder;
+//import geladoBuilder.sorveteBuilder;
 
 /**
  *
@@ -18,7 +18,9 @@ public class Main {
     public static void main(String[] args) {
         
         Carrinho cart = new Carrinho();
-        Console c = new Console(cart);
+        SingletonMenu menu = SingletonMenu.getInstancia();
+        Console c = new Console();
+        menu.carrinho(cart);
         c.run();
     }
 }
