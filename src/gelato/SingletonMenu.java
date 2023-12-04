@@ -114,7 +114,7 @@ public final class SingletonMenu {
         boolean run = true;
         while(run){
             System.out.println("\n+----------------------+");
-                System.out.println("|     Funcionario      |");
+            System.out.println("|     Funcionario      |");
             System.out.println("+----------------------+");
             System.out.println("|1 - Adicionar produto |");
             System.out.println("|2 - Remover produto   |");
@@ -235,7 +235,7 @@ public final class SingletonMenu {
     // ADICIONA UM PRODUTO NA LISTA DE PRODUTOS DISPONIVEIS
    protected void remover_Produto(){
        
-       System.out.println("Remover elemento\n");
+       System.out.println("Remover Produto\n");
        System.out.println("|1 - Agua         |");
        System.out.println("|2 - Refrigerante |");
        System.out.println("|3 - Energetico   |");
@@ -319,7 +319,7 @@ public final class SingletonMenu {
     protected void delCart() {
         
         verCart();
-        System.out.print("Escolha o número do item no carrinho para remover: ");
+        System.out.print("\nEscolha o número do item no carrinho para remover: ");
         int opcao = input.nextInt();
         carrinho.del(opcao);
     }
@@ -338,7 +338,7 @@ public final class SingletonMenu {
     
 ////////////////////////////////////////////////////////////////////////////////    
     
-    // METODOS IMPLEMENTADOS PARA O MENU
+    // METODOS IMPLEMENTADOS PARA O MENU DO CLIENTE
     
     
    // Boas vindas

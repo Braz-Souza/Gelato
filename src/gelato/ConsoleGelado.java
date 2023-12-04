@@ -91,7 +91,7 @@ public class ConsoleGelado{
         boolean run = true;
         int escolha;
         System.out.println(criador.getGelado());
-        System.out.println("1 -> Escolher sabor\n2 -> Trocar tamanho\n3 -> Adicionar Cobertura\n4 -> Remover Cobertura\n5 -> Comprar\n6 -> Voltar");
+        System.out.println("\n1 -> Escolher sabor\n2 -> Trocar tamanho\n3 -> Adicionar Cobertura\n4 -> Remover Cobertura\n5 -> Adicionar no carrinho\n6 -> Voltar");
         opcao = input.nextInt();
         while (run){
             switch (opcao) {
@@ -132,7 +132,7 @@ public class ConsoleGelado{
             }
             if (run) {
                 System.out.println(criador.getGelado());
-                System.out.println("1 -> Escolher sabor\n2 -> Trocar tamanho\n3 -> Adicionar Cobertura\n4 -> Remover Cobertura\n5 -> Comprar\n6 -> Voltar");
+                System.out.println("\n1 -> Escolher sabor\n2 -> Trocar tamanho\n3 -> Adicionar Cobertura\n4 -> Remover Cobertura\n5 -> Adicionar no carrinho\n6 -> Voltar");
                 opcao = input.nextInt();
             }
         }

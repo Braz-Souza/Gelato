@@ -12,13 +12,29 @@ import java.util.Scanner;
  */
 public class Console {
     Scanner input = new Scanner(System.in);
-   // Carrinho carrinho;
+    Scanner input2 = new Scanner(System.in);
+
     
     public Console() {
      //   this.carrinho = cart;
     }
     
-    SingletonMenu menu = SingletonMenu.getInstancia();
+    // "DUAS" INSTANCIAS DO SINGLETON
+    SingletonMenu menuC = SingletonMenu.getInstancia();
+    SingletonMenu menuF = SingletonMenu.getInstancia();
+
+    
+    // LISTA DE FUNCIONARIOS
+    private Cliente[] c = new Cliente[]{
+            new Cliente("Braz", "Braz10"),
+            new Cliente("Gabriel", "Gabriel9")
+   };
+    
+    // LISTA DE CLIENTES    
+    private Funcionario[] f = new Funcionario[]{
+            new Funcionario("Braz", "Braz10"),
+            new Funcionario("Gabriel", "Gabriel9")
+   };
     
     
     public void run() {
@@ -31,10 +47,10 @@ public class Console {
         while (run) {
             switch (opcao) {
                 case 1:
-                    menu.mainMenu();
+                    senha(1);
                     break;
                 case 2:
-                    menu.MenuF();
+                    senha(2);
                     break;
                 case 0:
                     run = false;
@@ -67,4 +83,107 @@ public class Console {
         System.out.print("Escolha a opção desejada: ");
     }
     
+    private void senha(int escolha){
+       
+        if (escolha == 1){
+            
+            System.out.println("+-----------------------------+");
+            System.out.println("|   Tela de Login - Cliente   |");
+            System.out.println("+-----------------------------+");       
+
+            String usuario = InsUsuario();
+
+
+            if(usuario != null){
+                String senha = InsSenha();
+
+
+                System.out.println("+-----------------------------+"); 
+
+                boolean R = verificarSenhaCliente(c, usuario, senha);
+
+                if(R == true){
+                                System.out.println("Entrando........");
+                                menuC.mainMenu();
+                            }
+                else{
+                    System.out.println("Opçao invalida!!!");
+                    senha(1);
+                }   
+        }
+        
+        }
+        else if(escolha == 2){
+        
+        System.out.println("+-----------------------------+");
+        System.out.println("| Tela de Login - Funcionario |");
+        System.out.println("+-----------------------------+");       
+        
+        String usuario = InsUsuario();
+        
+        if(usuario != null){
+            String senha = InsSenha();
+
+            System.out.println("+-----------------------------+"); 
+
+            boolean R = verificarSenhaFuncionario(f, usuario, senha);
+
+            if(R == true){
+                            System.out.println("Entrando........");
+                            menuF.MenuF();
+                        }
+            else{
+                System.out.println("Opçao invalida!!!");
+                senha(2);
+            }   
+        }
+    }
+    }
+    
+    
+    
+    private boolean verificarSenhaCliente(Cliente[] vetor, String usuario, String senha) {
+        
+        for (Cliente cliente : vetor) {
+            
+            if (cliente != null) {
+                
+                if(cliente.getUsuario().equals(usuario) && cliente.getSenha().equals(senha)){
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+    
+    private boolean verificarSenhaFuncionario(Funcionario[] vetor, String usuario, String senha) {
+        
+        for (Funcionario fun : vetor) {
+            
+            if (fun != null) {
+                
+                if(fun.getSenha().equals(senha) && fun.getFun().equals(usuario)){
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+    
+    
+    private String InsUsuario(){
+        
+        System.out.print("|Inserir usuario: ");
+        String usuario = input.nextLine();
+        
+        return usuario;
+    }
+    
+    private String InsSenha(){
+        
+        System.out.print("\n|Inserir senha: ");
+        String senha = input2.nextLine();
+        
+        return senha;
+    }
 }
