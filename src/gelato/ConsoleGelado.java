@@ -20,7 +20,16 @@ public class ConsoleGelado{
     }
     
     public void run(Carrinho cart) {
-        System.out.println("1 -> Sorvete\n2 -> Milkshake\n3 -> Voltar");
+        System.out.println("\n+----------------------+");
+        System.out.println("|       Gelados        |");
+        System.out.println("+----------------------+");
+        System.out.println("|1 - Criar Sorvete     |");
+        System.out.println("|2 - Criar Milkshake   |");
+        System.out.println("|0 - Voltar            |");
+        System.out.println("+----------------------+");
+        System.out.print("\nEscolha a opção desejada: ");
+
+  
         opcao = input.nextInt();
         switch (opcao) {
             case 1:
@@ -29,7 +38,7 @@ public class ConsoleGelado{
             case 2:
                 this.criarMilkshake(cart);
                 break;
-            case 3:
+            case 0:
             default:
                 break;
         }
@@ -41,16 +50,29 @@ public class ConsoleGelado{
         
         boolean run = true;
         int escolha;
+        
+        System.out.println("\n+--------------------------+");
+        System.out.println("|          Sorvete         |");
+        System.out.println("+--------------------------+\n");
         System.out.println(criador.getGelado());
-        System.out.println("1 -> Adicionar Sabor\n2 -> Remover Sabor\n3 -> Adicionar Cobertura\n4 -> Remover Cobertura\n5 -> Comprar\n6 -> Voltar");
+        System.out.println("\n+--------------------------+");
+        System.out.println("|1 - Adicionar Sabor       |");
+        System.out.println("|2 - Remover Sabor         |");
+        System.out.println("|3 - Adicionar Cobertura   |");
+        System.out.println("|4 - Remover Cobertura     |");
+        System.out.println("|5 - Adicionar no carrinho |");
+        System.out.println("|0 - Voltar                |");
+        System.out.println("+--------------------------+");
+        System.out.print("\nEscolha a opção desejada: ");
         opcao = input.nextInt();
         while (run){
             switch (opcao) {
                 case 1:
-                    System.out.println("Escolha um sabor:");
+                    
                     for (int i = 0; i < criador.getSabores().length; i++) {
                         System.out.println(String.format("%d -> %s", i, criador.getSabores()[i]));
                     }
+                    System.out.println("\nEscolha um sabor:");
                     escolha = input.nextInt();
                     criador.addSabor(escolha);
                     break;
@@ -58,10 +80,11 @@ public class ConsoleGelado{
                     criador.removeSabor();
                     break;
                 case 3:
-                    System.out.println("Escolha uma cobertura:");
+                    
                     for (int i = 0; i < criador.getCoberturas().length; i++) {
                         System.out.println(String.format("%d -> %s", i, criador.getCoberturas()[i]));
                     }
+                    System.out.println("\nEscolha uma cobertura:");
                     escolha = input.nextInt();
                     criador.addCobertura(escolha);
                     break;
@@ -71,14 +94,26 @@ public class ConsoleGelado{
                 case 5:
                     sorvete = criador.getGelado();
                     cart.add(sorvete);
-                case 6:
+                case 0:
                 default:
                     run = false;
                     break;
             }
             if (run) {
+                
+                System.out.println("\n+--------------------------+");
+                System.out.println("|          Sorvete         |");
+                System.out.println("+--------------------------+\n");
                 System.out.println(criador.getGelado());
-                System.out.println("1 -> Adicionar Sabor\n2 -> Remover Sabor\n3 -> Adicionar Cobertura\n4 -> Remover Cobertura\n5 -> Comprar\n6 -> Voltar");
+                System.out.println("\n+--------------------------+");
+                System.out.println("|1 - Adicionar Sabor       |");
+                System.out.println("|2 - Remover Sabor         |");
+                System.out.println("|3 - Adicionar Cobertura   |");
+                System.out.println("|4 - Remover Cobertura     |");
+                System.out.println("|5 - Adicionar no carrinho |");
+                System.out.println("|0 - Voltar                |");
+                System.out.println("+--------------------------+");
+                System.out.print("\nEscolha a opção desejada: ");
                 opcao = input.nextInt();
             }
         }
@@ -90,32 +125,47 @@ public class ConsoleGelado{
         
         boolean run = true;
         int escolha;
+        
+        System.out.println("\n+--------------------------+");
+        System.out.println("|         Milkshake        |");
+        System.out.println("+--------------------------+\n");
         System.out.println(criador.getGelado());
-        System.out.println("\n1 -> Escolher sabor\n2 -> Trocar tamanho\n3 -> Adicionar Cobertura\n4 -> Remover Cobertura\n5 -> Adicionar no carrinho\n6 -> Voltar");
+        System.out.println("\n+--------------------------+");
+        System.out.println("|1 - Escolher sabor        |");
+        System.out.println("|2 - Trocar tamanho        |");
+        System.out.println("|3 - Adicionar Cobertura   |");
+        System.out.println("|4 - Remover Cobertura     |");
+        System.out.println("|5 - Adicionar no carrinho |");
+        System.out.println("|0 - Voltar                |");
+        System.out.println("+--------------------------+");
+        System.out.print("\nEscolha a opção desejada: ");
         opcao = input.nextInt();
         while (run){
             switch (opcao) {
                 case 1:
-                    System.out.println("Escolha um sabor:");
+                    
                     for (int i = 0; i < criador.getSabores().length; i++) {
                         System.out.println(String.format("%d -> %s", i, criador.getSabores()[i]));
                     }
+                    System.out.println("\nEscolha um sabor:");
                     escolha = input.nextInt();
                     criador.setSabor(escolha);
                     break;
                 case 2:
-                    System.out.println("Escolha um tamanho:");
+                    
                     for (int i = 0; i < criador.getTamanhos().length; i++) {
                         System.out.println(String.format("%d -> %d Ml", i, criador.getTamanhos()[i]));
                     }
+                    System.out.println("\nEscolha um tamanho:");
                     escolha = input.nextInt();
                     criador.mudarTamanho(escolha);
                     break;
                 case 3:
-                    System.out.println("Escolha uma cobertura:");
+                    
                     for (int i = 0; i < criador.getCoberturas().length; i++) {
                         System.out.println(String.format("%d -> %s", i, criador.getCoberturas()[i]));
                     }
+                    System.out.println("\nEscolha uma cobertura:");
                     escolha = input.nextInt();
                     criador.addCobertura(escolha);
                     break;
@@ -125,14 +175,25 @@ public class ConsoleGelado{
                 case 5:
                     milkshake = criador.getGelado();
                     cart.add(milkshake);
-                case 6:
+                case 0:
                 default:
                     run = false;
                     break;
             }
             if (run) {
+                System.out.println("\n+--------------------------+");
+                System.out.println("|         Milkshake        |");
+                System.out.println("+--------------------------+\n");
                 System.out.println(criador.getGelado());
-                System.out.println("\n1 -> Escolher sabor\n2 -> Trocar tamanho\n3 -> Adicionar Cobertura\n4 -> Remover Cobertura\n5 -> Adicionar no carrinho\n6 -> Voltar");
+                System.out.println("\n+--------------------------+");
+                System.out.println("|1 - Escolher sabor        |");
+                System.out.println("|2 - Trocar tamanho        |");
+                System.out.println("|3 - Adicionar Cobertura   |");
+                System.out.println("|4 - Remover Cobertura     |");
+                System.out.println("|5 - Adicionar no carrinho |");
+                System.out.println("|0 - Voltar                |");
+                System.out.println("+--------------------------+");
+                System.out.print("\nEscolha a opção desejada: ");
                 opcao = input.nextInt();
             }
         }

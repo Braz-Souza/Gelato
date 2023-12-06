@@ -144,21 +144,9 @@ public final class SingletonMenu {
    
    
    
-    static void adicionarProduto(Produto[] vetor) {
-     // Encontrar a primeira posição vazia no vetor
-     int indice = -1;
-     for (int i = 0; i < vetor.length; i++) {
-         if (vetor[i] == null) {
-             indice = i;
-             break;
-         }
-     }
-
-     // Se houver uma posição vazia, adicionar o novo produto
-     if (indice != -1) {
-         
-         Scanner scanner = new Scanner(System.in);
-
+    static Produto[] adicionarProduto(Produto[] vetor) {
+        Scanner scanner = new Scanner(System.in);
+        
         // Solicitar ao funcionario que insira o nome do produto
         System.out.print("Digite o nome do produto: ");
 
@@ -171,42 +159,52 @@ public final class SingletonMenu {
         // Ler o float inserida pelo usuário
         float valor = scanner.nextFloat();
 
-        // Adicionar um produto ao vetor
+        // Cria um novo Produto e adiciona ao vetor
         Produto novoProduto = new Produto(nome, valor);
-         
+
+        // Cria um novo vetor com tamanho aumentado
+        Produto[] novoVetor = new Produto[vetor.length + 1];
+
+        // Copia os elementos do vetor antigo para o novo vetor
+        System.arraycopy(vetor, 0, novoVetor, 0, vetor.length);
+
+        // Adiciona o novo Produto ao final do novo vetor
+        novoVetor[novoVetor.length - 1] = novoProduto;
+
+        // Atualiza o vetor
+        vetor = novoVetor;
         
-         vetor[indice] = novoProduto;
-         System.out.println("Produto adicionado com sucesso.");
-     } else {
-         System.out.println("O vetor está cheio. Não foi possível adicionar o produto.");
-     }
+
+        return vetor;
  }
 
    
    
    // ADICIONA UM PRODUTO NA LISTA DE PRODUTOS DISPONIVEIS
    protected void adicionar_Produto(){
-       System.out.println("Adicionar elemento\n ");
-       System.out.println("|1 - Agua         |");
-       System.out.println("|2 - Refrigerante |");
-       System.out.println("|3 - Energetico   |");
-       System.out.println("|0 - Sair         |");
+       System.out.println("\n+----------------------+");
+       System.out.println("|   Adicionar elemento |");
+       System.out.println("+----------------------+");
+       System.out.println("|1 - Agua              |");
+       System.out.println("|2 - Refrigerante      |");
+       System.out.println("|3 - Energetico        |");
+       System.out.println("|0 - Sair              |");
+       System.out.println("+----------------------+");
        System.out.print("\nDigite a categoria que voce quer adicionar o produto: ");
 
        int opcao = entrada.nextInt();
 
         switch (opcao) {
             case 1:
-                Produto[] A = this.agua;
-                adicionarProduto(A);
+                agua = adicionarProduto(agua);
                 break;
             case 2:
-                Produto[] R = this.refri;
-                adicionarProduto(R);
+                Produto[] R = refri;
+                refri = adicionarProduto(refri);
                 break;
             case 3:
-                Produto[] E = this.energ;
-                adicionarProduto(E);
+                Produto[] E = energ;
+                energ = adicionarProduto(energ);
                 break;
             case 0:
                 MenuF();
@@ -220,49 +218,60 @@ public final class SingletonMenu {
    
    
    
-    static void removerProduto(Produto[] vetor, int indice) {
-     if (indice >= 0 && indice < vetor.length && vetor[indice] != null) {
-         System.out.println("Removendo produto: " + vetor[indice].getNome());
-         vetor[indice] = null;
-         System.out.println("Produto removido com sucesso.");
-     } else {
-         System.out.println("Índice inválido ou produto não encontrado.");
-     }
+    static Produto[] removerProduto(Produto[] vetor, int indice) {
+     
+        int index = indice;
+
+        if (index >= 0 && index < vetor.length) {
+            // Cria um novo vetor com tamanho reduzido
+            Produto[] novoVetor = new Produto[vetor.length - 1];
+
+            // Copia os elementos do vetor antigo para o novo vetor, excluindo o elemento a ser removido
+            System.arraycopy(vetor, 0, novoVetor, 0, index);
+            System.arraycopy(vetor, index + 1, novoVetor, index, vetor.length - index - 1);
+
+            // Atualiza o vetor
+            vetor = novoVetor;
+        
     }
-   
+    // Se o índice for inválido, retorna o vetor original sem alterações
+    return vetor;
+    }
     
     
     // ADICIONA UM PRODUTO NA LISTA DE PRODUTOS DISPONIVEIS
    protected void remover_Produto(){
        
-       System.out.println("Remover Produto\n");
-       System.out.println("|1 - Agua         |");
-       System.out.println("|2 - Refrigerante |");
-       System.out.println("|3 - Energetico   |");
+       System.out.println("\n+----------------------+");
+       System.out.println("|   Remover elemento   |");
+       System.out.println("+----------------------+");
+       System.out.println("|1 - Agua              |");
+       System.out.println("|2 - Refrigerante      |");
+       System.out.println("|3 - Energetico        |");
        System.out.println("\nDigite a categoria que voce quer remover o produto:");
 
        int opcao = entrada.nextInt();
         switch (opcao) {
             case 1:
-                Produto[] A = this.agua;
-                listarProdutosPorCategoria( A, "Agua");
-                System.out.print("Selecione um produto para remover: ");
+                listarProdutosPorCategoria( agua, "Agua");
+                System.out.print("Selecione o indice do produto para remove-lo: ");
                 int escolha = entrada.nextInt();
-                removerProduto(A, escolha);
+                
+                agua = removerProduto(agua, escolha);
                 break;
             case 2:
-                Produto[] R = this.refri;
-                listarProdutosPorCategoria( R, "Refrigerante");
-                System.out.print("Selecione um produto para remover: ");
+                listarProdutosPorCategoria( refri, "Refrigerante");
+                System.out.print("Selecione o indice do produto para remove-lo: ");
                 int escolha1 = entrada.nextInt();
-                removerProduto(R, escolha1);
+                
+                refri = removerProduto(refri, escolha1);
                 break;
             case 3:
-                Produto[] E = this.energ;
-                listarProdutosPorCategoria( E, "Energetico");
-                System.out.print("Selecione um produto para remover: ");
+                listarProdutosPorCategoria( energ, "Energetico");
+                System.out.print("Selecione o indice do produto para remove-lo: ");
                 int escolha2 = entrada.nextInt();
-                removerProduto(E, escolha2);
+                
+                energ = removerProduto(energ, escolha2);
                 break;
             case 0:
                 MenuF();
@@ -304,7 +313,33 @@ public final class SingletonMenu {
     // VER OS PRODUTOS DO CARRINHO
     protected void verCart() {
         carrinho.print();
+        
+    System.out.println("\n+-------------------------+");
+    System.out.println("|1 - Adicionar produtos   |");
+    System.out.println("|2 - Remover produtos     |");
+    System.out.println("|0 - Voltar ao menu       |");
+    System.out.println("+-------------------------+");
+    System.out.print("\nEscolha a opção desejada: ");
+    
+    int opcao = input.nextInt();
+    switch (opcao) {
+                
+                case 1:
+                    verCardapio();
+                    break;
+                case 2:
+                    this.delCart();
+                    break;
+                case 0:
+                    mainMenu();
+                    break;
+                default:
+                    System.out.println("Opção inválida!\n");
+
     }
+    }
+    
+    
     
     // ADICIONAR PRODUTO NO CARRINHO
     protected void addCart() {
@@ -318,7 +353,6 @@ public final class SingletonMenu {
     // REMOVER PRODUTO DO CARRINHO
     protected void delCart() {
         
-        verCart();
         System.out.print("\nEscolha o número do item no carrinho para remover: ");
         int opcao = input.nextInt();
         carrinho.del(opcao);
@@ -354,14 +388,12 @@ public final class SingletonMenu {
         System.out.println("+----------------------+");
         System.out.println("|1 - Ver cardapio      |");
         System.out.println("|2 - Ver carrinho      |");
-        System.out.println("|3 - Remover Produto   |");
-        System.out.println("|4 - Finalizar compra  |");
-        System.out.println("|5 - Sair              |");
+        System.out.println("|3 - Finalizar compra  |");
+        System.out.println("|4 - Sair              |");
         System.out.println("+----------------------+");
-        System.out.print("Escolha a opção desejada: ");
+        System.out.print("\nEscolha a opção desejada: ");
         
         int opcao = input.nextInt();
-        System.out.println("--------------------------\n");   
         return opcao;
    }
    
@@ -380,12 +412,9 @@ public final class SingletonMenu {
                     this.verCart();
                     break;
                 case 3:
-                    this.delCart();
-                    break;
-                case 4:
                     run = this.buy();
                     break;
-                case 5:
+                case 4:
                     run = false;
                     break;
                 default:
@@ -399,7 +428,7 @@ public final class SingletonMenu {
    // CARDAPIO
    protected void verCardapio() {
        
-    System.out.println("+----------------------+");
+    System.out.println("\n+----------------------+");
     System.out.println("|       CARDAPIO       |");
     System.out.println("+----------------------+");
     System.out.println("|1 - Ver Gelados       |");
@@ -408,10 +437,9 @@ public final class SingletonMenu {
     System.out.println("+----------------------+");
 
     System.out.println("+----------------------+");
-    System.out.print("Escolha a opção desejada: ");
+    System.out.print("\nEscolha a opção desejada: ");
 
     int opcao = input.nextInt();
-    System.out.println("+----------------------+\n");
     switch (opcao) {
 
             case 1:
@@ -447,7 +475,7 @@ public final class SingletonMenu {
    // VER BEBIDAS
    
    public void mostrarBebidas(){
-    System.out.println("+-----------------------+");
+    System.out.println("\n+-----------------------+");
     System.out.println("|        BEBIDAS        |");
     System.out.println("+-----------------------+");
     System.out.println("+--------------------------+");
@@ -458,10 +486,9 @@ public final class SingletonMenu {
     System.out.println("|0 - Voltar ao cardapio                |");
     System.out.println("+--------------------------------------+\n");
     System.out.println("+----------------------+");
-    System.out.print("Escolha a opção desejada: ");
+    System.out.print("\nEscolha a opção desejada: ");
 
     int opcao = entrada.nextInt();
-    System.out.println("+----------------------+\n");
     switch (opcao) {
 
             case 1:

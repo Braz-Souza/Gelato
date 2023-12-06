@@ -26,13 +26,15 @@ public class Console {
     // LISTA DE FUNCIONARIOS
     private Cliente[] c = new Cliente[]{
             new Cliente("Braz", "Braz10"),
-            new Cliente("Gabriel", "Gabriel9")
+            new Cliente("Gabriel", "Gabriel9"),
+            new Cliente("1", "1")
    };
     
     // LISTA DE CLIENTES    
     private Funcionario[] f = new Funcionario[]{
             new Funcionario("Braz", "Braz10"),
-            new Funcionario("Gabriel", "Gabriel9")
+            new Funcionario("Gabriel", "Gabriel9"),
+            new Funcionario("1", "1")
    };
     
     

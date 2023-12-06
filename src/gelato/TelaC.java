@@ -49,6 +49,7 @@ public class TelaC extends JFrame {
         });
 
         JPanel botoesPanel = new JPanel();
+        
         botoesPanel.add(btnVerCardapio);
         botoesPanel.add(btnVerCarrinho);
         botoesPanel.add(btnRemoverCarrinho);
@@ -56,8 +57,8 @@ public class TelaC extends JFrame {
 
         setLayout(new BorderLayout());
         add(botoesPanel, BorderLayout.CENTER);
-
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        
+        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         setSize(400, 200);
         setLocationRelativeTo(null);
         setVisible(true);
