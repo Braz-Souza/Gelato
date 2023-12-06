@@ -16,7 +16,6 @@ public class Console {
 
     
     public Console() {
-     //   this.carrinho = cart;
     }
     
     // "DUAS" INSTANCIAS DO SINGLETON
@@ -174,7 +173,7 @@ public class Console {
     private String InsUsuario(){
         
         System.out.print("|Inserir usuario: ");
-        String usuario = input.nextLine();
+        String usuario = input2.nextLine();
         
         return usuario;
     }
